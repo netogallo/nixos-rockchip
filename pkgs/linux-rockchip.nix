@@ -71,5 +71,23 @@ in with pkgs.linuxKernel; {
     }];
     structuredExtraConfig = kernelConfig // pinetabKernelConfig;
   });
+
+  linux_6_10_2_pinetab = packagesFor (kernels.linux_6_10.override {
+    argsOverride = {
+      src = pkgs.fetchFromGitHub {
+        owner = "dreemurrs-embedded";
+        repo = "linux-pinetab2";
+        rev = "24dfa33a3c2387d3a312bf1e4767aba757c60d19";
+        sha256 = "wraIt2kBwgMNMzFX2DiLhPZGM2Z/2xLqUhS466650vs=";
+      };
+      version = "6.10.2-danctnix1";
+      modDirVersion = "6.10.2-danctnix1";
+    };
+    kernelPatches = [{
+      name = "Enable backlight in defconfig";
+      patch = ./backlight.patch;
+    }];
+    structuredExtraConfig = kernelConfig // pinetabKernelConfig;
+  });
 }
 
