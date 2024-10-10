@@ -78,7 +78,7 @@ in with pkgs.linuxKernel; {
         owner = "dreemurrs-embedded";
         repo = "linux-pinetab2";
         rev = "24dfa33a3c2387d3a312bf1e4767aba757c60d19";
-        sha256 = "wraIt2kBwgMNMzFX2DiLhPZGM2Z/2xLqUhS466650vs=";
+	sha256 = "Al0dZGqoReodcCXhUa7U0oqYe9PqfmB6pPfnnNy/sUI=";
       };
       version = "6.10.2-danctnix1";
       modDirVersion = "6.10.2-danctnix1";

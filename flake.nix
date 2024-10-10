@@ -73,7 +73,7 @@
         };
         "PineTab2" = {
           uBoot = (uBoot system).uBootPineTab2;
-          kernel = (kernel system).linux_6_9_pinetab;
+          kernel = (kernel system).linux_6_10_2_pinetab;
           extraModules = [ (bes2600 system) noZFS ];
         };
         "Rock64" = {
