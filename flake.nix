@@ -40,6 +40,16 @@
         ];
       };
 
+      plasma6 = {
+      	nixpkgs.overlays = [
+	  (final: super: {
+	    services.displayManager.sddm.enable = true;
+	    services.displayManager.sddm.wayland.enable = true;
+	    services.desktopManager.plasma6.enable = true;
+	  })
+	];
+      };
+
       bes2600 = system: {
         nixpkgs.config.allowUnfree = true;
         hardware.firmware = [ (bes2600Firmware system) ];
@@ -74,7 +84,7 @@
         "PineTab2" = {
           uBoot = (uBoot system).uBootPineTab2;
           kernel = (kernel system).linux_6_10_2_pinetab;
-          extraModules = [ (bes2600 system) noZFS ];
+          extraModules = [ (bes2600 system) noZFS plasma6 ];
         };
         "Rock64" = {
           uBoot = (uBoot system).uBootRock64;
@@ -109,12 +119,31 @@
             system = "aarch64-linux";
 
             modules = [
-              self.nixosModules.sdImageRockchipInstaller
+              self.nixosModules.sdImageRockchip
               {
                 system.stateVersion = "24.05";
 
                 rockchip.uBoot = value.uBoot;
                 boot.kernelPackages = value.kernel;
+
+		users.users.neto = {
+		  isNormalUser = true;
+		  extraGroups = [ "wheel" ];
+		  initialHashedPassword = "$y$j9T$0CJ//IzajCHYlk.zPVhKh.$K3C5KulD1PRlgWMGZPjusi1C3ubyaey7hKKCV8YPxE.";
+		  openssh.authorizedKeys.keys = [
+		    "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBL93nfzqG8CLQEMmbH/iA9Wq+8uPQsfacpe7r+tG2tmdsCYZ+bYZkZUp1fKRy42mOeJ051ZnZaYOUffmhf0Pcks= neto@localhost.localdomain"
+		  ];
+		};
+	        services.displayManager.sddm.enable = true;
+		services.displayManager.sddm.wayland.enable = true;
+		services.desktopManager.plasma6.enable = true;
+		networking.networkmanager.enable = true;
+		services.openssh = {
+                  enable = true;
+                  settings.PasswordAuthentication = false;
+                  settings.KbdInteractiveAuthentication = false;
+                  settings.PermitRootLogin = "no";
+                };
               }
               # Cross-compiling the whole system is hard, install from caches or compile with emulation instead.
               # { nixpkgs.crossSystem.system = "aarch64-linux"; nixpkgs.system = system;}

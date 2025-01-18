@@ -1,6 +1,6 @@
 { config, pkgs, lib, modulesPath, ... }: {
   imports = [
-    (modulesPath + "/profiles/base.nix")
+    (builtins.trace "path is: ${modulesPath}" modulesPath + "/profiles/base.nix")
     (modulesPath + "/installer/sd-card/sd-image.nix")
   ];
 
