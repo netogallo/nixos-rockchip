@@ -200,6 +200,8 @@
         uBootSoQuartzBlade = (uBoot system).uBootSoQuartzBlade;
 
         uBootOrangePiCM4 = (uBoot system).uBootOrangePiCM4;
+        uBootOrangePi5B = (uBoot system).uBootOrangePi5B;
+
 
         uBootRadxaCM3IO = (uBoot system).uBootRadxaCM3IO;
         uBootRadxaRock4 = (uBoot system).uBootRadxaRock4;
