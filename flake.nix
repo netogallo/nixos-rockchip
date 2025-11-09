@@ -209,6 +209,7 @@
         uBootRadxaRock4CPlus = (uBoot system).uBootRadxaRock4CPlus;
 
         bes2600 = (bes2600Firmware system);
+        brcm43752 = brcm43752pcieFirmware system;
       };
       formatter = (import inputs.nixpkgsStable { inherit system; }).nixfmt-tree;
     });
