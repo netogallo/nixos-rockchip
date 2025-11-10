@@ -27,12 +27,6 @@
           config.allowUnfree = true; # for arm-trusted-firmware
         };
 
-      #uBoot = system: (pkgsUnstable system).callPackage ./pkgs/uboot-rockchip.nix { };
-      #kernel = system: (pkgsUnstable system).callPackage ./pkgs/linux-rockchip.nix { };
-      #bes2600Firmware = system: (pkgsUnstable system).callPackage ./pkgs/bes2600-firmware.nix { };
-      #armbian-firmware = system: (pkgsUnstable system).callPackage ./pkgs/armbian-firmware.nix { };
-      #brcm43752pcieFirmware = system: (armbian-firmware system).brcm-43752-pcie;
-
       scope = system: with (pkgsUnstable system); lib.makeScope newScope (self-scope:
         {
           pkgs-stable = pkgs system;
