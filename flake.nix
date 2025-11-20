@@ -194,7 +194,7 @@
           kernel_linux_6_12_rockchip = kernel.linux_6_12_rockchip;
           kernel_linux_6_16_rockchip = kernel.linux_6_16_rockchip;
           kernel_linux_6_15_pinetab = kernel.linux_6_15_pinetab;
-          kernel_linux_6_13_orangepi5b = kernel.linux_6_13_orangepi5b;
+          kernel_linux_6_17_orangepi5b = kernel.linux_6_17_orangepi5b;
         };
         packages = (images system) // {
           uBootQuartz64A = uBoot.uBootQuartz64A;
